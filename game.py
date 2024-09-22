@@ -1,6 +1,7 @@
 import playerInput
 import solverInput
 
+# used to determine if the game is being restarted or played for the first time
 first = True
 
 def main():
