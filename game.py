@@ -10,16 +10,19 @@ def main():
 
     printField(field)
     
+    # main loop
     while not end:
         inp = playerInput.playerInput(field)
         field[inp[0]][inp[1]] = 'X'
         printField(field)
 
         winner = checkWhoWon(field)
+        # 1 letter = winner is returned as who won
         if winner is not None and len(winner) == 1:
             print(winner + " has won the game!")
             end = True
             break
+        # 2 letter = the game is a tie
         elif winner is not None and len(winner) == 2:
             print("The game has ended in a tie!")
             end = True
@@ -30,10 +33,12 @@ def main():
         printField(field)
 
         winner = checkWhoWon(field)
+        # 1 letter = winner is returned as who won
         if winner is not None and len(winner) == 1:
             print(winner + " has won the game!")
             end = True
             break
+        # 2 letter = the game is a tie
         elif winner is not None and len(winner) == 2:
             print("The game has ended in a tie!")
             end = True
@@ -44,7 +49,7 @@ def main():
     print("Restarting...")
     first = False
     main()
-    
+
 def printField(field):
     for x in field[:-1]:
         print(x[0] + " | " + x[1] + " | " + x[2])

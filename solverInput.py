@@ -22,6 +22,7 @@ def minimax(field, depth, alpha, beta, isMaximizing):
                     score = minimax(field, depth + 1, alpha, beta, False)
                     field[x][y] = ' '
                     bestScore = max(score, bestScore)
+                    # alpha-beta pruning
                     alpha = max(alpha, score)
                     if beta <= alpha:
                         break
@@ -39,6 +40,7 @@ def minimax(field, depth, alpha, beta, isMaximizing):
                     score = minimax(field, depth + 1, alpha, beta, True)
                     field[x][y] = ' '
                     bestScore = min(score, bestScore)
+                    # alpha-beta pruning
                     beta = min(beta, score)
                     if beta <= alpha:
                         break
@@ -62,6 +64,7 @@ def solverInput(field):
                     bestScore = score
                     move = (x, y)
 
+    # edge case - if no move could be found, just play something random (should never happen)
     if move == (-1, -1):
         move = random.choice([(x, y) for x in range(3) for y in range(3) if field[x][y] == ' '])
 
